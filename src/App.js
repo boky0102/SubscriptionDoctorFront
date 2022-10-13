@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+
+import { useEffect, useState } from 'react';
 import './App.css';
+import Header from './components/Header';
 
 function App() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+
+  useEffect(() => {
+    console.log(email);
+    console.log(password);
+  },[email, password])
+
+  function emailHandler(e){
+      setEmail(e.target.value);
+  }
+
+  function passwordHandler(e){
+    setPassword(e.target.value);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header handleEmailChange={emailHandler} handlePasswordChange={passwordHandler}></Header>
     </div>
   );
 }
